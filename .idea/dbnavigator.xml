@@ -12,7 +12,7 @@
   <component name="DBNavigator.Project.DatabaseBrowserManager">
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
-    <show-object-properties value="true" />
+    <show-object-properties value="false" />
     <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
@@ -33,7 +33,15 @@ INSERT INTO users (id, firstname, lastname,username,email, password)VALUES (378,
 
 INSERT INTO users (id, firstname, lastname,username,email, password)VALUES (?,?,?,?,?,?);
 
-SELECT firstname FROM users WHERE id = 400;]]></console>
+SELECT * FROM users WHERE id = 400;
+
+UPDATE users SET email = 'yeniemail@gmail.com' WHERE id = 400;
+
+SELECT email FROM users WHERE id = 400;
+
+DELETE FROM users WHERE email = 'yeniemail@gmail.com';
+
+SELECT * FROM users WHERE email = 'yeniemail@gmail.com';]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
@@ -58,6 +66,7 @@ SELECT firstname FROM users WHERE id = 400;]]></console>
         <condition column="lastname" operator="=" value="bakir" active="true" />
       </filter>
     </filter-actions>
+    <filter-actions connection-id="b1b43c58-8bd3-44af-a173-ee74b5c0a9b9" dataset="u201212290_qaeasy.languages" active-filter-id="" />
   </component>
   <component name="DBNavigator.Project.ExecutionManager">
     <retain-sticky-names value="false" />
