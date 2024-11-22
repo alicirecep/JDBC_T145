@@ -1,8 +1,9 @@
 package stepDefinitions;
 
 import io.cucumber.java.en.Given;
-
+import manage.QueryManage;
 import java.sql.*;
+import static org.testng.Assert.assertEquals;
 
 public class Select_Query {
 
@@ -10,6 +11,8 @@ public class Select_Query {
 	Statement statement;
 	ResultSet resultSet;
 	String QUERY;
+
+	QueryManage queryManage = new QueryManage();
 
 	@Given("Database baglantisi kurulur.")
 	public void database_baglantisi_kurulur() throws SQLException {
@@ -28,6 +31,9 @@ public class Select_Query {
 
 	statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 	resultSet = statement.executeQuery(QUERY);
+
+
+
 	}
 	@Given("Sonuclar listelenir.")
 	public void sonuclar_listelenir() throws SQLException {
@@ -47,5 +53,60 @@ public class Select_Query {
 		statement.close();
 		connection.close();
 	}
+
+	// *************************************************************
+
+	@Given("Kayitli kullanicilari listeleme sorgusu hazirlanir ve calistirilir.")
+	public void kayitli_kullanicilari_listeleme_sorgusu_hazirlanir_ve_calistirilir() throws SQLException {
+
+		// Türkiye’den (country_code = 'TR') kayıtlı olan kullanıcıları listelemek istiyorum.
+
+		QUERY = queryManage.getQUERY2();
+		statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+
+		resultSet = statement.executeQuery(QUERY);
+
+
+	}
+	@Given("Kayitli kullanicilar listelenir.")
+	public void kayitli_kullanicilar_listelenir() throws SQLException {
+
+
+		int count = 0;
+		while(resultSet.next()){
+			count++;
+			System.out.println(count + ". firstname:  " +resultSet.getString(1));
+			System.out.println(count + ".lastname:  " +resultSet.getString(2));
+			System.out.println(count + ".email:  " +resultSet.getString(3));
+		}
+
+
+
+	}
+
+	// *************************************************************
+
+	@Given("Email ile kullanici goruntuleme sorgusu hazirlanir ve calistirilir.")
+	public void email_ile_kullanici_goruntuleme_sorgusu_hazirlanir_ve_calistirilir() throws SQLException {
+
+		QUERY = queryManage.getQUERY03();
+		statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+		resultSet = statement.executeQuery(QUERY);
+
+	}
+	@Given("Email ve kulalnici dogrulanir.")
+	public void email_ve_kulalnici_dogrulanir() throws SQLException {
+
+
+		String expFirstName= "murat";
+		String expLastName= "donmezdemir";
+
+		resultSet.next();
+		assertEquals(expFirstName, resultSet.getString(1));
+		assertEquals(expLastName, resultSet.getString(2));
+
+	}
+
+
 
 }

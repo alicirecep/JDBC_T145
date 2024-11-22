@@ -6,7 +6,7 @@
   </component>
   <component name="DBNavigator.Project.DataEditorManager">
     <record-view-column-sorting-type value="BY_INDEX" />
-    <value-preview-text-wrapping value="true" />
+    <value-preview-text-wrapping value="false" />
     <value-preview-pinned value="false" />
   </component>
   <component name="DBNavigator.Project.DatabaseBrowserManager">
@@ -21,16 +21,20 @@
 
 -- User tablosundaki tüm kullanıcıların adlarını ve e-posta adreslerini listelemek istiyorum
 
-SELECT firstname, email FROM users;]]></console>
+SELECT firstname, email FROM users;
+
+SELECT firstname, lastname, email FROM users WHERE country_code = 'TR';
+
+-- muratdonmezdemir.user@easybus.com
+
+SELECT firstname, lastname FROM users WHERE email = 'muratdonmezdemir.user@easybus.com';]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
     <last-used-providers />
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="b1b43c58-8bd3-44af-a173-ee74b5c0a9b9" object-ref="consoles/qa.easyBusTicket" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="b1b43c58-8bd3-44af-a173-ee74b5c0a9b9" />
