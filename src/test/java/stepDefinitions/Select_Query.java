@@ -3,6 +3,9 @@ package stepDefinitions;
 import io.cucumber.java.en.Given;
 import manage.QueryManage;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.testng.Assert.assertEquals;
 
 public class Select_Query {
@@ -104,6 +107,19 @@ public class Select_Query {
 		resultSet.next();
 		assertEquals(expFirstName, resultSet.getString(1));
 		assertEquals(expLastName, resultSet.getString(2));
+	/*
+		List<String> expectedResultList = new ArrayList<>();
+			expectedResultList.add("murat");
+
+			String actualData = resultSet.getString(1);
+
+			assertEquals(expectedResultList.get(1),actualData);
+
+	*/
+
+
+
+
 
 	}
 

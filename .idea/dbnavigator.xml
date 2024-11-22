@@ -27,7 +27,13 @@ SELECT firstname, lastname, email FROM users WHERE country_code = 'TR';
 
 -- muratdonmezdemir.user@easybus.com
 
-SELECT firstname, lastname FROM users WHERE email = 'muratdonmezdemir.user@easybus.com';]]></console>
+SELECT firstname, lastname FROM users WHERE email = 'muratdonmezdemir.user@easybus.com';
+
+INSERT INTO users (id, firstname, lastname,username,email, password)VALUES (378,'john', 'doe', 'johndoe','jdoe@gmail.com','12345');
+
+INSERT INTO users (id, firstname, lastname,username,email, password)VALUES (?,?,?,?,?,?);
+
+SELECT firstname FROM users WHERE id = 400;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
